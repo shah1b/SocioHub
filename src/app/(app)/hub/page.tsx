@@ -36,7 +36,7 @@ export default function HubPage() {
           {all.length} creators · {new Set(all.map((c) => c.platform)).size}{" "}
           platforms · your rules
         </p>
-        <button className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent/40 transition active:scale-95">
+        <button className="bg-brand mt-4 inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent/40 transition active:scale-95">
           <Plus className="size-4" /> Add creator
         </button>
       </div>

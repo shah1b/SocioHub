@@ -37,8 +37,8 @@ export function HomeFeed() {
 
       <div className="mt-4 space-y-3.5">
         {/* Daily digest — warm glow card. */}
-        <section className="animate-rise relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-orange-600 via-orange-700 to-[#3a0f02] p-4 text-white shadow-xl shadow-black/40">
-          <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-orange-200">
+        <section className="animate-rise relative overflow-hidden rounded-[1.75rem] bg-gradient-to-b from-brand-hi via-[#e23a10] to-[#471003] p-4 text-white shadow-xl shadow-black/40">
+          <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-white/75">
             <Sparkles className="size-3" /> Daily digest
           </p>
           <h2 className="mt-1 text-xl font-extrabold tracking-tight">
@@ -54,7 +54,7 @@ export function HomeFeed() {
               </span>
             ))}
           </div>
-          <p className="mt-3 text-xs font-medium text-orange-100/80">
+          <p className="mt-3 text-xs font-medium text-white/70">
             Everything important. Nothing unnecessary.
           </p>
         </section>

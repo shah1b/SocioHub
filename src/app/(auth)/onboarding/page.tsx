@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Check, ChevronLeft } from "lucide-react";
 import { Avatar } from "@/components/avatar";
@@ -79,9 +80,14 @@ export default function OnboardingPage() {
             <ChevronLeft className="size-5" />
           </button>
         ) : (
-          <span className="text-xl font-extrabold tracking-tight text-accent">
-            Flow
-          </span>
+          <Image
+            src="/icon.png"
+            alt="Flow logo"
+            width={40}
+            height={40}
+            className="rounded-xl"
+            priority
+          />
         )}
         <div className="flex flex-1 justify-center gap-1.5">
           {STEPS.map((_, index) => (
@@ -257,7 +263,7 @@ export default function OnboardingPage() {
 
       <button
         onClick={next}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-accent py-4 text-[15px] font-bold text-white shadow-lg shadow-accent/40 transition active:scale-[0.98]"
+        className="bg-brand mt-8 flex w-full items-center justify-center gap-2 rounded-full py-4 text-[15px] font-bold text-white shadow-lg shadow-accent/40 transition active:scale-[0.98]"
       >
         {step === STEPS.length - 1 ? "Enter your Flow" : "Continue"}
         <ArrowRight className="size-4" />

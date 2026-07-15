@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowRight, LoaderCircle } from "lucide-react";
@@ -43,11 +44,17 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
 
   return (
     <div className="animate-rise">
-      <div className="hero-glow pointer-events-none fixed inset-x-0 -top-24 h-80" />
-
-      <p className="relative text-2xl font-extrabold tracking-tight text-accent">
-        Flow
-      </p>
+      <div className="relative flex items-center gap-3">
+        <Image
+          src="/icon.png"
+          alt="Flow logo"
+          width={48}
+          height={48}
+          className="rounded-2xl shadow-lg shadow-accent/30"
+          priority
+        />
+        <p className="text-2xl font-extrabold tracking-tight">Flow</p>
+      </div>
       <h1 className="relative mt-8 text-4xl font-extrabold leading-tight tracking-tight">
         {isLogin ? "Welcome back." : "Your feed. Your rules."}
       </h1>
@@ -82,7 +89,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         <button
           type="submit"
           disabled={pending}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-accent py-4 text-[15px] font-bold text-white shadow-lg shadow-accent/40 transition active:scale-[0.98] disabled:opacity-60"
+          className="bg-brand flex w-full items-center justify-center gap-2 rounded-full py-4 text-[15px] font-bold text-white shadow-lg shadow-accent/40 transition active:scale-[0.98] disabled:opacity-60"
         >
           {pending ? (
             <LoaderCircle className="size-4 animate-spin" />

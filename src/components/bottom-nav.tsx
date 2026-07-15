@@ -34,7 +34,7 @@ export function BottomNav() {
               aria-current={active ? "page" : undefined}
               className={`flex size-12 items-center justify-center rounded-full transition active:scale-90 ${
                 accent
-                  ? "bg-accent text-white shadow-lg shadow-accent/40"
+                  ? "bg-brand text-white shadow-lg shadow-accent/40"
                   : active
                     ? "bg-card text-card-foreground"
                     : "glass text-foreground/80"

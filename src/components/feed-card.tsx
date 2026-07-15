@@ -75,7 +75,7 @@ export function FeedCard({ item }: { item: FeedItem }) {
         <div
           className={`mt-3 flex items-center gap-3 rounded-3xl p-4 text-white ${
             live
-              ? "bg-gradient-to-br from-red-600 to-orange-700"
+              ? "bg-brand"
               : "bg-gradient-to-br from-zinc-900 to-zinc-800"
           }`}
         >

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* Flow design tokens — black canvas, floating white cards, vivid orange. */
+/* Flow design tokens — black canvas, floating white cards, and the
+   red-orange of the Flow logo (#fb5c28 → #ec2b05). */
 :root {
   --background: #060606;
   --foreground: #fafafa;
@@ -9,8 +10,10 @@
   --surface: rgba(255, 255, 255, 0.07);
   --surface-strong: rgba(255, 255, 255, 0.12);
   --glass-border: rgba(255, 255, 255, 0.09);
-  --accent: #ff5c00;
-  --accent-soft: rgba(255, 92, 0, 0.16);
+  --accent: #f7481b;
+  --accent-soft: rgba(247, 72, 27, 0.16);
+  --brand-hi: #fb5c28;
+  --brand-lo: #ec2b05;
   --card: #ffffff;
   --card-foreground: #101010;
   --card-muted: #6b7280;
@@ -27,6 +30,8 @@
   --color-glass-border: var(--glass-border);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-brand-hi: var(--brand-hi);
+  --color-brand-lo: var(--brand-lo);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-card-muted: var(--card-muted);
@@ -63,16 +68,22 @@ body {
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
 }
 
+/* Primary CTA surface — the logo's vertical red-orange gradient. */
+.bg-brand {
+  background-image: linear-gradient(180deg, var(--brand-hi), var(--brand-lo));
+}
+
 /* Warm hero glow that bleeds from the top of a screen into black. */
 .hero-glow {
   background:
-    radial-gradient(120% 70% at 50% -20%, rgba(255, 92, 0, 0.55), rgba(180, 40, 10, 0.25) 45%, transparent 75%);
+    radial-gradient(120% 70% at 50% -20%, rgba(249, 72, 24, 0.55), rgba(176, 34, 6, 0.25) 45%, transparent 75%);
 }
 
-/* Pastel gradient canvas for the assistant chat, like a calm conversation. */
+/* Pastel gradient canvas for the assistant chat, like a calm conversation.
+   Warmed toward peach to sit with the brand red-orange. */
 .pastel-canvas {
   background:
-    linear-gradient(160deg, #fbe8f0 0%, #eee7fa 38%, #e2ecfb 70%, #eef2f7 100%);
+    linear-gradient(160deg, #fdeae2 0%, #f8e7ee 34%, #ece7fa 66%, #e5edf9 100%);
 }
 
 .no-scrollbar {

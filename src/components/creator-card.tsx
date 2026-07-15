@@ -29,7 +29,7 @@ export function CreatorCard({ creator }: { creator: Creator }) {
       <button
         onClick={() => setFollowed((v) => !v)}
         className={`flex items-center gap-1 rounded-full px-4 py-2 text-xs font-bold transition active:scale-95 ${
-          followed ? "bg-card-panel text-card-muted" : "bg-accent text-white"
+          followed ? "bg-card-panel text-card-muted" : "bg-brand text-white"
         }`}
       >
         {followed ? (

@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Send, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { Send } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -60,9 +61,13 @@ export default function AssistantPage() {
     <div className="pastel-canvas fixed inset-0 overflow-y-auto">
       <div className="mx-auto flex min-h-full max-w-md flex-col px-4 pb-36 pt-6 text-zinc-900">
         <div className="flex items-center gap-3 pb-5">
-          <span className="flex size-11 items-center justify-center rounded-2xl bg-accent text-white shadow-lg shadow-accent/30">
-            <Sparkles className="size-5" />
-          </span>
+          <Image
+            src="/icon.png"
+            alt="Flow logo"
+            width={44}
+            height={44}
+            className="rounded-2xl shadow-lg shadow-accent/30"
+          />
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight">Flow AI</h1>
             <p className="text-xs font-medium text-zinc-500">
@@ -82,7 +87,7 @@ export default function AssistantPage() {
               <div
                 className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm font-medium leading-relaxed shadow-md ${
                   message.role === "user"
-                    ? "rounded-br-lg bg-accent text-white shadow-accent/20"
+                    ? "bg-brand rounded-br-lg text-white shadow-accent/20"
                     : "rounded-bl-lg bg-white/85 text-zinc-800 shadow-zinc-300/40 backdrop-blur"
                 }`}
               >
@@ -121,7 +126,7 @@ export default function AssistantPage() {
             <button
               type="submit"
               aria-label="Send"
-              className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/30 transition active:scale-90"
+              className="bg-brand flex size-10 shrink-0 items-center justify-center rounded-full text-white shadow-lg shadow-accent/30 transition active:scale-90"
             >
               <Send className="size-4" />
             </button>
