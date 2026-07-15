@@ -30,6 +30,8 @@ function demoReply(question: string): string {
   return "I'm running in demo mode — once Flow is connected to Supabase and an AI backend, I'll answer from your real feed. Try one of the suggestions to see how I'll summarize your day.";
 }
 
+/* The one intentionally light screen: a calm pastel canvas with white
+   frosted bubbles — a visual breather from the black feed. */
 export default function AssistantPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -55,72 +57,76 @@ export default function AssistantPage() {
   };
 
   return (
-    <div className="flex min-h-[calc(100dvh-11rem)] flex-col">
-      <div className="flex items-center gap-2.5 pb-4">
-        <span className="flex size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-400 text-white">
-          <Sparkles className="size-5" />
-        </span>
-        <div>
-          <h1 className="text-lg font-semibold">Flow AI</h1>
-          <p className="text-xs text-muted">Answers from your feed only</p>
+    <div className="pastel-canvas fixed inset-0 overflow-y-auto">
+      <div className="mx-auto flex min-h-full max-w-md flex-col px-4 pb-36 pt-6 text-zinc-900">
+        <div className="flex items-center gap-3 pb-5">
+          <span className="flex size-11 items-center justify-center rounded-2xl bg-accent text-white shadow-lg shadow-accent/30">
+            <Sparkles className="size-5" />
+          </span>
+          <div>
+            <h1 className="text-2xl font-extrabold tracking-tight">Flow AI</h1>
+            <p className="text-xs font-medium text-zinc-500">
+              Answers from your feed only
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="flex-1 space-y-3">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`animate-rise flex ${
-              message.role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
+        <div className="flex-1 space-y-3">
+          {messages.map((message, index) => (
             <div
-              className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-relaxed ${
-                message.role === "user"
-                  ? "rounded-br-lg bg-gradient-to-r from-violet-600 to-violet-500 text-white"
-                  : "glass rounded-bl-lg text-foreground/90"
+              key={index}
+              className={`animate-rise flex ${
+                message.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              {message.text}
+              <div
+                className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm font-medium leading-relaxed shadow-md ${
+                  message.role === "user"
+                    ? "rounded-br-lg bg-accent text-white shadow-accent/20"
+                    : "rounded-bl-lg bg-white/85 text-zinc-800 shadow-zinc-300/40 backdrop-blur"
+                }`}
+              >
+                {message.text}
+              </div>
             </div>
-          </div>
-        ))}
-        <div ref={endRef} />
-      </div>
-
-      <div className="sticky bottom-24 mt-4 space-y-2.5">
-        <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4">
-          {SUGGESTIONS.map((suggestion) => (
-            <button
-              key={suggestion}
-              onClick={() => send(suggestion)}
-              className="glass shrink-0 rounded-full px-3.5 py-2 text-xs font-medium text-foreground/85 transition active:scale-95"
-            >
-              {suggestion}
-            </button>
           ))}
+          <div ref={endRef} />
         </div>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            send(input);
-          }}
-          className="glass-strong flex items-center gap-2 rounded-full py-1.5 pl-4 pr-1.5"
-        >
-          <input
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-            placeholder="Ask about your feed…"
-            className="w-full bg-transparent text-sm outline-none placeholder:text-faint"
-          />
-          <button
-            type="submit"
-            aria-label="Send"
-            className="flex size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 text-white transition active:scale-90"
+
+        <div className="sticky bottom-28 mt-5 space-y-2.5">
+          <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4">
+            {SUGGESTIONS.map((suggestion) => (
+              <button
+                key={suggestion}
+                onClick={() => send(suggestion)}
+                className="shrink-0 rounded-full bg-white/70 px-4 py-2 text-xs font-bold text-zinc-700 shadow-sm backdrop-blur transition active:scale-95"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              send(input);
+            }}
+            className="flex items-center gap-2 rounded-full bg-white/90 py-1.5 pl-5 pr-1.5 shadow-lg shadow-zinc-300/40 backdrop-blur"
           >
-            <Send className="size-4" />
-          </button>
-        </form>
+            <input
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
+              placeholder="Start typing…"
+              className="w-full bg-transparent text-sm font-medium text-zinc-900 outline-none placeholder:text-zinc-400"
+            />
+            <button
+              type="submit"
+              aria-label="Send"
+              className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/30 transition active:scale-90"
+            >
+              <Send className="size-4" />
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -68,26 +68,28 @@ export default function OnboardingPage() {
   const next = () => (step === STEPS.length - 1 ? finish() : setStep(step + 1));
 
   return (
-    <div className="animate-rise flex min-h-[80dvh] flex-col" key={step}>
+    <div className="animate-rise flex min-h-[85dvh] flex-col" key={step}>
       <div className="flex items-center gap-3">
         {step > 0 ? (
           <button
             onClick={() => setStep(step - 1)}
-            className="glass flex size-8 items-center justify-center rounded-full text-muted"
+            className="glass flex size-10 items-center justify-center rounded-full"
             aria-label="Back"
           >
-            <ChevronLeft className="size-4" />
+            <ChevronLeft className="size-5" />
           </button>
         ) : (
-          <span className="text-brand text-xl font-bold">Flow</span>
+          <span className="text-xl font-extrabold tracking-tight text-accent">
+            Flow
+          </span>
         )}
         <div className="flex flex-1 justify-center gap-1.5">
           {STEPS.map((_, index) => (
             <span
               key={index}
-              className={`h-1 rounded-full transition-all ${
+              className={`h-1.5 rounded-full transition-all ${
                 index === step
-                  ? "w-6 bg-accent"
+                  ? "w-7 bg-accent"
                   : index < step
                     ? "w-3 bg-accent/50"
                     : "w-3 bg-surface-strong"
@@ -95,7 +97,7 @@ export default function OnboardingPage() {
             />
           ))}
         </div>
-        <span className="w-8 text-right text-xs text-faint">
+        <span className="w-10 text-right text-xs font-bold text-faint">
           {step + 1}/{STEPS.length}
         </span>
       </div>
@@ -103,8 +105,10 @@ export default function OnboardingPage() {
       <div className="flex-1 pt-8">
         {step === 0 && (
           <>
-            <h1 className="text-2xl font-semibold">Connect your platforms</h1>
-            <p className="mt-1.5 text-sm text-muted">
+            <h1 className="text-3xl font-extrabold tracking-tight">
+              Connect your platforms
+            </h1>
+            <p className="mt-2 text-[15px] text-muted">
               Flow pulls everything into one clean feed. Pick where your
               content lives.
             </p>
@@ -115,14 +119,18 @@ export default function OnboardingPage() {
                   <button
                     key={platform}
                     onClick={() => togglePlatform(platform)}
-                    className={`glass flex items-center gap-3 rounded-2xl p-4 text-sm font-medium transition active:scale-95 ${
-                      selected ? "border-accent/60 bg-accent-soft" : ""
+                    className={`flex items-center gap-3 rounded-[1.5rem] p-4 text-sm font-bold shadow-lg transition active:scale-95 ${
+                      selected
+                        ? "bg-card text-card-foreground shadow-black/30"
+                        : "glass shadow-black/20"
                     }`}
                   >
                     <PlatformIcon platform={platform} className="size-5" />
                     {PLATFORM_LABELS[platform]}
                     {selected && (
-                      <Check className="ml-auto size-4 text-accent" />
+                      <span className="ml-auto flex size-5 items-center justify-center rounded-full bg-accent text-white">
+                        <Check className="size-3" />
+                      </span>
                     )}
                   </button>
                 );
@@ -137,14 +145,16 @@ export default function OnboardingPage() {
 
         {step === 1 && (
           <>
-            <h1 className="text-2xl font-semibold">What do you care about?</h1>
-            <p className="mt-1.5 text-sm text-muted">
+            <h1 className="text-3xl font-extrabold tracking-tight">
+              What do you care about?
+            </h1>
+            <p className="mt-2 text-[15px] text-muted">
               Only these topics will ever appear in your feed.
             </p>
             <div className="mt-6 space-y-5">
               {Object.entries(INTERESTS).map(([group, topics]) => (
                 <div key={group}>
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">
                     {group}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -154,10 +164,8 @@ export default function OnboardingPage() {
                         <button
                           key={topic}
                           onClick={() => toggleInterest(topic)}
-                          className={`rounded-full px-4 py-2 text-sm font-medium transition active:scale-95 ${
-                            selected
-                              ? "bg-gradient-to-r from-violet-500 to-cyan-500 text-white"
-                              : "glass"
+                          className={`rounded-full px-4 py-2.5 text-sm font-bold transition active:scale-95 ${
+                            selected ? "bg-accent text-white" : "glass"
                           }`}
                         >
                           {topic}
@@ -173,8 +181,10 @@ export default function OnboardingPage() {
 
         {step === 2 && (
           <>
-            <h1 className="text-2xl font-semibold">Pick your creators</h1>
-            <p className="mt-1.5 text-sm text-muted">
+            <h1 className="text-3xl font-extrabold tracking-tight">
+              Pick your creators
+            </h1>
+            <p className="mt-2 text-[15px] text-muted">
               You decide exactly who appears. Nobody else.
             </p>
             <div className="mt-6 space-y-2">
@@ -184,24 +194,28 @@ export default function OnboardingPage() {
                   <button
                     key={creator.id}
                     onClick={() => togglePicked(creator.id)}
-                    className={`glass flex w-full items-center gap-3 rounded-2xl p-3 text-left transition active:scale-[0.98] ${
-                      selected ? "border-accent/60 bg-accent-soft" : ""
+                    className={`flex w-full items-center gap-3 rounded-[1.5rem] p-3 text-left transition active:scale-[0.98] ${
+                      selected
+                        ? "bg-card text-card-foreground shadow-lg shadow-black/30"
+                        : "glass"
                     }`}
                   >
-                    <Avatar creator={creator} />
+                    <Avatar creator={creator} shape="squircle" className="size-11 text-xs" />
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-semibold">
+                      <span className="block truncate text-[15px] font-bold">
                         {creator.name}
                       </span>
-                      <span className="block truncate text-xs text-muted">
+                      <span
+                        className={`block truncate text-xs ${selected ? "text-card-muted" : "text-muted"}`}
+                      >
                         {PLATFORM_LABELS[creator.platform]} · {creator.category}
                       </span>
                     </span>
                     <span
-                      className={`flex size-6 items-center justify-center rounded-full border transition ${
+                      className={`flex size-6 items-center justify-center rounded-full transition ${
                         selected
-                          ? "border-accent bg-accent text-white"
-                          : "border-glass-border"
+                          ? "bg-accent text-white"
+                          : "border border-glass-border"
                       }`}
                     >
                       {selected && <Check className="size-3.5" />}
@@ -215,8 +229,10 @@ export default function OnboardingPage() {
 
         {step === 3 && (
           <>
-            <h1 className="text-2xl font-semibold">Build your algorithm</h1>
-            <p className="mt-1.5 text-sm text-muted">
+            <h1 className="text-3xl font-extrabold tracking-tight">
+              Build your algorithm
+            </h1>
+            <p className="mt-2 text-[15px] text-muted">
               Your rules decide what gets through — not engagement metrics.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
@@ -226,10 +242,8 @@ export default function OnboardingPage() {
                   <button
                     key={rule}
                     onClick={() => toggleRule(rule)}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition active:scale-95 ${
-                      selected
-                        ? "bg-gradient-to-r from-violet-500 to-cyan-500 text-white"
-                        : "glass"
+                    className={`rounded-full px-4 py-2.5 text-sm font-bold transition active:scale-95 ${
+                      selected ? "bg-accent text-white" : "glass"
                     }`}
                   >
                     {rule}
@@ -243,7 +257,7 @@ export default function OnboardingPage() {
 
       <button
         onClick={next}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-cyan-500 py-3.5 text-sm font-semibold text-white transition active:scale-[0.98]"
+        className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-accent py-4 text-[15px] font-bold text-white shadow-lg shadow-accent/40 transition active:scale-[0.98]"
       >
         {step === STEPS.length - 1 ? "Enter your Flow" : "Continue"}
         <ArrowRight className="size-4" />

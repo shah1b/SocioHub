@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Check, ChevronRight, LogIn, ShieldCheck } from "lucide-react";
 import { PlatformIcon, PLATFORM_LABELS } from "@/components/platform-icon";
+import { ScreenHeader } from "@/components/screen-header";
 import { SectionHeader } from "@/components/section-header";
 import { MODES, useAttention } from "@/lib/attention";
 import type { AttentionMode, Platform } from "@/lib/types";
@@ -14,28 +15,32 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-lg font-semibold">Settings</h1>
+      <ScreenHeader title="Settings" subtitle="Your feed. Your rules." />
 
       <section>
         <SectionHeader title="Attention mode" />
-        <div className="glass divide-y divide-glass-border overflow-hidden rounded-3xl">
+        <div className="glass divide-y divide-glass-border overflow-hidden rounded-[1.5rem]">
           {(Object.keys(MODES) as AttentionMode[]).map((key) => (
             <button
               key={key}
               onClick={() => setMode(key)}
-              className={`flex w-full items-center justify-between px-4 py-3.5 text-left transition ${
+              className={`flex w-full items-center justify-between px-4 py-4 text-left transition ${
                 mode === key ? "bg-accent-soft" : "active:bg-surface"
               }`}
             >
               <span>
-                <span className="block text-sm font-medium">
+                <span className="block text-[15px] font-bold">
                   {MODES[key].label}
                 </span>
                 <span className="block text-xs text-muted">
                   {MODES[key].description}
                 </span>
               </span>
-              {mode === key && <Check className="size-4 text-accent" />}
+              {mode === key && (
+                <span className="flex size-6 items-center justify-center rounded-full bg-accent text-white">
+                  <Check className="size-3.5" />
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -43,17 +48,17 @@ export default function SettingsPage() {
 
       <section>
         <SectionHeader title="Connected platforms" />
-        <div className="glass divide-y divide-glass-border overflow-hidden rounded-3xl">
+        <div className="glass divide-y divide-glass-border overflow-hidden rounded-[1.5rem]">
           {CONNECTED.map((platform) => (
             <div
               key={platform}
-              className="flex items-center justify-between px-4 py-3.5"
+              className="flex items-center justify-between px-4 py-4"
             >
-              <span className="flex items-center gap-3 text-sm font-medium">
+              <span className="flex items-center gap-3 text-[15px] font-bold">
                 <PlatformIcon platform={platform} className="size-4 text-muted" />
                 {PLATFORM_LABELS[platform]}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-emerald-400">
+              <span className="flex items-center gap-1.5 rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-400">
                 <span className="size-1.5 rounded-full bg-emerald-400" />
                 Connected
               </span>
@@ -67,10 +72,10 @@ export default function SettingsPage() {
 
       <section>
         <SectionHeader title="Account" />
-        <div className="glass divide-y divide-glass-border overflow-hidden rounded-3xl">
+        <div className="glass divide-y divide-glass-border overflow-hidden rounded-[1.5rem]">
           <Link
             href="/login"
-            className="flex items-center justify-between px-4 py-3.5 text-sm font-medium transition active:bg-surface"
+            className="flex items-center justify-between px-4 py-4 text-[15px] font-bold transition active:bg-surface"
           >
             <span className="flex items-center gap-3">
               <LogIn className="size-4 text-muted" /> Sign in
@@ -79,7 +84,7 @@ export default function SettingsPage() {
           </Link>
           <Link
             href="/onboarding"
-            className="flex items-center justify-between px-4 py-3.5 text-sm font-medium transition active:bg-surface"
+            className="flex items-center justify-between px-4 py-4 text-[15px] font-bold transition active:bg-surface"
           >
             <span className="flex items-center gap-3">
               <ShieldCheck className="size-4 text-muted" /> Redo onboarding

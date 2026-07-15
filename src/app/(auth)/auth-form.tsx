@@ -43,17 +43,21 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
 
   return (
     <div className="animate-rise">
-      <p className="text-brand text-3xl font-bold tracking-tight">Flow</p>
-      <h1 className="mt-6 text-2xl font-semibold leading-tight">
+      <div className="hero-glow pointer-events-none fixed inset-x-0 -top-24 h-80" />
+
+      <p className="relative text-2xl font-extrabold tracking-tight text-accent">
+        Flow
+      </p>
+      <h1 className="relative mt-8 text-4xl font-extrabold leading-tight tracking-tight">
         {isLogin ? "Welcome back." : "Your feed. Your rules."}
       </h1>
-      <p className="mt-1.5 text-sm text-muted">
+      <p className="relative mt-2 text-[15px] text-muted">
         {isLogin
           ? "Pick up right where you left off."
           : "One clean feed with only the creators and topics you choose."}
       </p>
 
-      <form onSubmit={submit} className="mt-8 space-y-3">
+      <form onSubmit={submit} className="relative mt-10 space-y-3">
         <input
           type="email"
           required={isSupabaseConfigured}
@@ -61,7 +65,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           onChange={(event) => setEmail(event.target.value)}
           placeholder="Email"
           autoComplete="email"
-          className="glass w-full rounded-2xl px-4 py-3.5 text-sm outline-none transition placeholder:text-faint focus:border-accent/50"
+          className="w-full rounded-full bg-card px-5 py-4 text-sm font-medium text-card-foreground shadow-lg shadow-black/30 outline-none placeholder:text-card-muted"
         />
         <input
           type="password"
@@ -70,15 +74,15 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           onChange={(event) => setPassword(event.target.value)}
           placeholder="Password"
           autoComplete={isLogin ? "current-password" : "new-password"}
-          className="glass w-full rounded-2xl px-4 py-3.5 text-sm outline-none transition placeholder:text-faint focus:border-accent/50"
+          className="w-full rounded-full bg-card px-5 py-4 text-sm font-medium text-card-foreground shadow-lg shadow-black/30 outline-none placeholder:text-card-muted"
         />
 
-        {error && <p className="px-1 text-xs text-red-400">{error}</p>}
+        {error && <p className="px-2 text-xs text-red-400">{error}</p>}
 
         <button
           type="submit"
           disabled={pending}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-cyan-500 py-3.5 text-sm font-semibold text-white transition active:scale-[0.98] disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-accent py-4 text-[15px] font-bold text-white shadow-lg shadow-accent/40 transition active:scale-[0.98] disabled:opacity-60"
         >
           {pending ? (
             <LoaderCircle className="size-4 animate-spin" />
@@ -92,22 +96,22 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       </form>
 
       {!isSupabaseConfigured && (
-        <p className="mt-3 text-center text-xs text-faint">
+        <p className="relative mt-3 text-center text-xs text-faint">
           Demo mode — Supabase isn&apos;t configured, so this continues without
           an account.
         </p>
       )}
 
-      <p className="mt-8 text-center text-sm text-muted">
+      <p className="relative mt-10 text-center text-sm text-muted">
         {isLogin ? "New to Flow?" : "Already have an account?"}{" "}
         <Link
           href={isLogin ? "/signup" : "/login"}
-          className="font-semibold text-accent"
+          className="font-bold text-accent"
         >
           {isLogin ? "Create account" : "Sign in"}
         </Link>
       </p>
-      <p className="mt-2 text-center text-sm">
+      <p className="relative mt-2 text-center">
         <Link href="/" className="text-xs text-faint underline-offset-2">
           Skip for now → explore the demo feed
         </Link>

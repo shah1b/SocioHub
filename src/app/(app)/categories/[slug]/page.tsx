@@ -22,25 +22,29 @@ export default async function CategoryPage({
   );
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-2">
+    <div className="space-y-3.5">
+      <div className="flex items-center gap-3 pt-2">
         <Link
           href="/categories"
-          className="glass flex size-8 items-center justify-center rounded-full text-muted transition active:scale-95"
+          className="glass flex size-10 items-center justify-center rounded-full transition active:scale-95"
           aria-label="Back to categories"
         >
-          <ChevronLeft className="size-4" />
+          <ChevronLeft className="size-5" />
         </Link>
-        <h1 className="text-lg font-semibold">{category.name}</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight">
+          {category.name}
+        </h1>
       </div>
 
       {items.length > 0 ? (
         items.map((item) => <FeedCard key={item.id} item={item} />)
       ) : (
-        <p className="glass rounded-3xl p-6 text-center text-sm text-muted">
-          Nothing new in {category.name} right now. Content appears here once
-          your platforms are connected.
-        </p>
+        <div className="rounded-[1.75rem] bg-card p-8 text-center text-card-foreground shadow-xl shadow-black/40">
+          <p className="text-[15px] font-bold">Nothing new here</p>
+          <p className="mt-1 text-sm text-card-muted">
+            {category.name} content appears once your platforms are connected.
+          </p>
+        </div>
       )}
     </div>
   );
