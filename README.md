@@ -35,9 +35,29 @@ Read the full problem statement and philosophy in [`docs/vision.md`](docs/vision
 
 > The user — not the algorithm — decides what deserves attention.
 
+## Tech stack
+
+- **Next.js 16** (App Router, TypeScript) — mobile-first web app
+- **Tailwind CSS 4** — dark-mode-first, glassmorphism design system
+- **Supabase** — auth, Postgres with row-level security (`supabase/migrations/`)
+
+## Getting started
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The app runs in **demo mode** with mock feed data out of the box — no configuration needed. To enable real auth and data, copy `.env.example` to `.env.local`, fill in your Supabase project credentials, and apply the migration in `supabase/migrations/`.
+
+```bash
+pnpm build   # production build
+pnpm lint    # eslint
+```
+
 ## Status
 
-This repository currently holds product documentation only; no application code has been written yet. See [`docs/roadmap.md`](docs/roadmap.md) for what's planned next.
+Product documentation plus a working mobile-first UI scaffold: home feed with daily digest and attention modes, explore, categories, creator hub, AI assistant (canned demo replies), watch later, onboarding flow, and Supabase-backed auth wiring. Platform ingestion and the real AI backend are not built yet — see [`docs/roadmap.md`](docs/roadmap.md).
 
 ## Mission
 
