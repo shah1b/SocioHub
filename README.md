@@ -55,9 +55,13 @@ pnpm build   # production build
 pnpm lint    # eslint
 ```
 
+## Admin console
+
+A desktop-first admin dashboard lives at [`/admin`](src/app/admin): overview analytics (DAU trend, ingestion by platform, KPI tiles with a date-range filter), user management, creator catalog, content/ingestion monitoring, a moderation queue, and feature-flag settings. It runs on demo data; the `admin` role and its RLS policies are in `supabase/migrations/00000000000002_admin_roles.sql`.
+
 ## Status
 
-Product documentation plus a working mobile-first UI scaffold: home feed with daily digest and attention modes, explore, categories, creator hub, AI assistant (canned demo replies), watch later, onboarding flow, and Supabase-backed auth wiring. Platform ingestion and the real AI backend are not built yet — see [`docs/roadmap.md`](docs/roadmap.md).
+Product documentation plus a working mobile-first UI scaffold: home feed with daily digest and attention modes, explore, categories, creator hub, AI assistant (canned demo replies), watch later, onboarding flow, Supabase-backed auth wiring, and the admin console above. Platform ingestion and the real AI backend are not built yet — see [`docs/roadmap.md`](docs/roadmap.md).
 
 ## Mission
 

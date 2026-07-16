@@ -1,0 +1,21 @@
+/* Chart chrome tokens for the admin dashboard (dark-only surface).
+   Values follow the dataviz reference chrome; the accent is the Flow
+   brand hue, validated ≥3:1 on this surface. */
+.viz-root {
+  color-scheme: dark;
+  --viz-surface: #1a1a19;
+  --viz-page: #060606;
+  --viz-ink: #ffffff;
+  --viz-ink-2: #c3c2b7;
+  --viz-muted: #898781;
+  --viz-grid: #2c2c2a;
+  --viz-baseline: #383835;
+  --viz-accent: #f7481b;
+  --viz-accent-wash: rgba(247, 72, 27, 0.1);
+  --viz-de-emphasis: #55544f;
+  --viz-good: #0ca30c;
+  --viz-warning: #fab219;
+  --viz-serious: #ec835a;
+  --viz-critical: #d03b3b;
+  --viz-border: rgba(255, 255, 255, 0.1);
+}
