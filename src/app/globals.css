@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 /* Flow design tokens — black canvas, floating white cards, and the
-   red-orange of the Flow logo (#fb5c28 → #ec2b05). */
+   red-orange of the Flow logo (#fb5c28 → #ec2b05). Dark is the default
+   (dark mode first); a resolved theme is stamped on <html data-theme>
+   before first paint by the theme script. */
 :root {
   --background: #060606;
   --foreground: #fafafa;
@@ -18,6 +20,18 @@
   --card-foreground: #101010;
   --card-muted: #6b7280;
   --card-panel: #f3f3f5;
+}
+
+/* Light mode: warm off-white canvas, same white cards and brand hue. */
+:root[data-theme="light"] {
+  --background: #f4f3f0;
+  --foreground: #131313;
+  --muted: #62666e;
+  --faint: #9a9aa2;
+  --surface: rgba(0, 0, 0, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --accent-soft: rgba(247, 72, 27, 0.12);
 }
 
 @theme inline {
@@ -42,6 +56,10 @@
 
 html {
   color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -77,6 +95,28 @@ body {
 .hero-glow {
   background:
     radial-gradient(120% 70% at 50% -20%, rgba(249, 72, 24, 0.55), rgba(176, 34, 6, 0.25) 45%, transparent 75%);
+}
+
+/* Light-mode adjustments: glow softens, and the card drop-shadows tuned
+   for the black canvas relax so white cards float instead of looming. */
+:root[data-theme="light"] .hero-glow {
+  opacity: 0.4;
+}
+
+:root[data-theme="light"] .text-emerald-400 {
+  color: #047857;
+}
+
+:root[data-theme="light"] .bg-emerald-400 {
+  background-color: #047857;
+}
+
+:root[data-theme="light"] .shadow-black\/20,
+:root[data-theme="light"] .shadow-black\/30,
+:root[data-theme="light"] .shadow-black\/40,
+:root[data-theme="light"] .shadow-black\/50,
+:root[data-theme="light"] .shadow-black\/60 {
+  --tw-shadow-color: rgba(32, 22, 14, 0.12);
 }
 
 /* Pastel gradient canvas for the assistant chat, like a calm conversation.

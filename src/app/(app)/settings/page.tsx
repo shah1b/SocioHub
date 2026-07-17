@@ -1,21 +1,59 @@
 "use client";
 
 import Link from "next/link";
-import { Check, ChevronRight, LogIn, ShieldCheck } from "lucide-react";
+import {
+  Check,
+  ChevronRight,
+  LogIn,
+  Monitor,
+  Moon,
+  ShieldCheck,
+  Sun,
+} from "lucide-react";
 import { PlatformIcon, PLATFORM_LABELS } from "@/components/platform-icon";
 import { ScreenHeader } from "@/components/screen-header";
 import { SectionHeader } from "@/components/section-header";
 import { MODES, useAttention } from "@/lib/attention";
+import { useTheme, type ThemePref } from "@/lib/theme";
 import type { AttentionMode, Platform } from "@/lib/types";
 
 const CONNECTED: Platform[] = ["youtube", "reddit", "x", "rss", "podcast", "twitch"];
 
+const THEMES: { value: ThemePref; label: string; icon: typeof Moon }[] = [
+  { value: "dark", label: "Dark", icon: Moon },
+  { value: "light", label: "Light", icon: Sun },
+  { value: "system", label: "System", icon: Monitor },
+];
+
 export default function SettingsPage() {
   const { mode, setMode } = useAttention();
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="space-y-6">
       <ScreenHeader title="Settings" subtitle="Your feed. Your rules." />
+
+      <section>
+        <SectionHeader title="Appearance" />
+        <div className="glass flex gap-1 rounded-full p-1">
+          {THEMES.map(({ value, label, icon: Icon }) => (
+            <button
+              key={value}
+              onClick={() => setTheme(value)}
+              aria-pressed={theme === value}
+              className={`flex flex-1 items-center justify-center gap-1.5 rounded-full py-2.5 text-sm font-bold transition active:scale-95 ${
+                theme === value
+                  ? "bg-card text-card-foreground shadow-md shadow-black/20"
+                  : "text-muted"
+              }`}
+            >
+              <Icon className="size-4" />
+              {label}
+              {theme === value && <Check className="size-3.5 text-accent" />}
+            </button>
+          ))}
+        </div>
+      </section>
 
       <section>
         <SectionHeader title="Attention mode" />
