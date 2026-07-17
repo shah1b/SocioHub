@@ -16,7 +16,7 @@ export default function AdminLayout({
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-[var(--viz-border)] bg-[#0d0d0c] lg:flex">
         <div className="flex items-center gap-2.5 px-5 pb-6 pt-6">
           <Image
-            src="/icon.png"
+            src="/icon.webp"
             alt="Flow logo"
             width={32}
             height={32}
@@ -40,7 +40,7 @@ export default function AdminLayout({
 
       {/* Compact header for < lg screens. */}
       <div className="fixed inset-x-0 top-0 z-40 flex items-center gap-2.5 border-b border-[var(--viz-border)] bg-[#0d0d0c] px-4 py-3 lg:hidden">
-        <Image src="/icon.png" alt="Flow logo" width={26} height={26} className="rounded-md" />
+        <Image src="/icon.webp" alt="Flow logo" width={26} height={26} className="rounded-md" />
         <p className="text-sm font-bold">Flow Admin</p>
         <AdminNav compact />
       </div>

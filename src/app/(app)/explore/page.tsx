@@ -4,11 +4,19 @@ import { Search, Settings } from "lucide-react";
 import { CreatorCard } from "@/components/creator-card";
 import { HeaderCircle, ScreenHeader } from "@/components/screen-header";
 import { SectionHeader } from "@/components/section-header";
-import { categories, suggestedCreators } from "@/lib/mock-data";
+import { getCreators } from "@/lib/data";
+import { categories } from "@/lib/mock-data";
 
 export const metadata: Metadata = { title: "Explore" };
+export const revalidate = 120;
 
-export default function ExplorePage() {
+export default async function ExplorePage() {
+  const catalog = await getCreators();
+  const suggested = catalog.map((creator) => ({
+    ...creator,
+    suggestedBecause:
+      creator.suggestedBecause ?? `Popular in ${creator.category}`,
+  }));
   return (
     <div className="space-y-6">
       <ScreenHeader
@@ -51,7 +59,7 @@ export default function ExplorePage() {
           Based on quality and your interests — never on engagement bait.
         </p>
         <div className="space-y-2.5">
-          {suggestedCreators.map((creator) => (
+          {suggested.map((creator) => (
             <CreatorCard key={creator.id} creator={creator} />
           ))}
         </div>

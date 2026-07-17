@@ -46,7 +46,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
     <div className="animate-rise">
       <div className="relative flex items-center gap-3">
         <Image
-          src="/icon.png"
+          src="/icon.webp"
           alt="Flow logo"
           width={48}
           height={48}

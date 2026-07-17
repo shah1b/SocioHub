@@ -62,7 +62,7 @@ export default function AssistantPage() {
       <div className="mx-auto flex min-h-full max-w-md flex-col px-4 pb-36 pt-6 text-zinc-900">
         <div className="flex items-center gap-3 pb-5">
           <Image
-            src="/icon.png"
+            src="/icon.webp"
             alt="Flow logo"
             width={44}
             height={44}

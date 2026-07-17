@@ -7,6 +7,8 @@ import { ArrowRight, Check, ChevronLeft } from "lucide-react";
 import { Avatar } from "@/components/avatar";
 import { PlatformIcon, PLATFORM_LABELS } from "@/components/platform-icon";
 import { creators, suggestedCreators } from "@/lib/mock-data";
+import { createClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 import type { Platform } from "@/lib/types";
 
 const PLATFORMS: Platform[] = ["youtube", "reddit", "x", "rss", "twitch", "podcast"];
@@ -53,7 +55,7 @@ export default function OnboardingPage() {
 
   const allCreators = [...Object.values(creators), ...suggestedCreators];
 
-  const finish = () => {
+  const finish = async () => {
     localStorage.setItem(
       "flow.onboarding",
       JSON.stringify({
@@ -63,6 +65,38 @@ export default function OnboardingPage() {
         rules: [...rules],
       }),
     );
+
+    // Signed-in users get their choices persisted to Supabase too.
+    if (isSupabaseConfigured) {
+      try {
+        const supabase = createClient();
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (user) {
+          if (platforms.size > 0) {
+            await supabase.from("platform_connections").upsert(
+              [...platforms].map((platform) => ({
+                user_id: user.id,
+                platform,
+              })),
+              { onConflict: "user_id,platform" },
+            );
+          }
+          await supabase.from("feed_rules").upsert({
+            user_id: user.id,
+            hide_topics: [...rules],
+          });
+          await supabase
+            .from("profiles")
+            .update({ onboarded: true })
+            .eq("id", user.id);
+        }
+      } catch {
+        // Demo-friendly: never block entering the app on persistence.
+      }
+    }
+
     router.push("/");
   };
 
@@ -81,7 +115,7 @@ export default function OnboardingPage() {
           </button>
         ) : (
           <Image
-            src="/icon.png"
+            src="/icon.webp"
             alt="Flow logo"
             width={40}
             height={40}

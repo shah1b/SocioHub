@@ -5,12 +5,19 @@ import { Avatar } from "@/components/avatar";
 import { FeedCard } from "@/components/feed-card";
 import { FeedHeader } from "@/components/screen-header";
 import { MODES, useAttention } from "@/lib/attention";
-import { creators, digest, feedItems } from "@/lib/mock-data";
+import { digest } from "@/lib/mock-data";
+import type { Creator, FeedItem } from "@/lib/types";
 
-export function HomeFeed() {
+export function HomeFeed({ items: allItems }: { items: FeedItem[] }) {
   const { mode } = useAttention();
-  const items = feedItems.filter(MODES[mode].filter);
-  const storyCreators = Object.values(creators).slice(0, 8);
+  const items = allItems.filter(MODES[mode].filter);
+  const storyCreators = allItems
+    .map((item) => item.creator)
+    .filter(
+      (creator, index, arr): creator is Creator =>
+        arr.findIndex((c) => c.id === creator.id) === index,
+    )
+    .slice(0, 8);
 
   return (
     <div>
@@ -65,7 +72,7 @@ export function HomeFeed() {
               {MODES[mode].label} mode
             </span>{" "}
             — {MODES[mode].description.toLowerCase()}. Showing {items.length}{" "}
-            of {feedItems.length} items.
+            of {allItems.length} items.
           </p>
         )}
 

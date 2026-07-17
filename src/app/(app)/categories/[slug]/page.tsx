@@ -2,7 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { FeedCard } from "@/components/feed-card";
-import { categories, feedItems } from "@/lib/mock-data";
+import { getFeedItems } from "@/lib/data";
+import { categories } from "@/lib/mock-data";
+
+export const revalidate = 120;
 
 export function generateStaticParams() {
   return categories.map(({ slug }) => ({ slug }));
@@ -17,7 +20,8 @@ export default async function CategoryPage({
   const category = categories.find((c) => c.slug === slug);
   if (!category) notFound();
 
-  const items = feedItems.filter(
+  const allItems = await getFeedItems();
+  const items = allItems.filter(
     (item) => item.category.toLowerCase().replace(/\s+/g, "-") === slug,
   );
 
