@@ -6,6 +6,7 @@ import { Sparkles } from "lucide-react";
 import { Avatar } from "@/components/avatar";
 import { FeedCard } from "@/components/feed-card";
 import { FeedHeader } from "@/components/screen-header";
+import { TrendingRail } from "@/components/trending-rail";
 import { MODES, useAttention } from "@/lib/attention";
 import { digest } from "@/lib/mock-data";
 import type { Creator, FeedItem } from "@/lib/types";
@@ -76,6 +77,8 @@ export function HomeFeed({ items: allItems }: { items: FeedItem[] }) {
             Everything important. Nothing unnecessary.
           </p>
         </section>
+
+        <TrendingRail items={allItems} />
 
         {mode !== "relax" && (
           <p className="px-1 text-xs text-muted">

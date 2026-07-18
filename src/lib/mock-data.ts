@@ -35,10 +35,10 @@ export const creators: Record<string, Creator> = {
   },
   espnfc: {
     id: "espnfc",
-    avatarUrl: "https://unavatar.io/youtube/@ESPNFC?fallback=false",
+    avatarUrl: "https://unavatar.io/facebook/ESPNFC?fallback=false",
     name: "ESPN FC",
-    handle: "@ESPNFC",
-    platform: "youtube",
+    handle: "ESPN FC",
+    platform: "facebook",
     category: "Football",
     gradient: "from-emerald-400 to-teal-600",
     followed: true,
@@ -55,10 +55,10 @@ export const creators: Record<string, Creator> = {
   },
   athletic: {
     id: "athletic",
-    avatarUrl: "https://unavatar.io/theathletic.com?fallback=false",
+    avatarUrl: "https://unavatar.io/x/TheAthletic?fallback=false",
     name: "The Athletic",
-    handle: "theathletic.com",
-    platform: "rss",
+    handle: "@TheAthletic",
+    platform: "x",
     category: "Football",
     gradient: "from-zinc-400 to-zinc-600",
     followed: true,
@@ -85,10 +85,10 @@ export const creators: Record<string, Creator> = {
   },
   formula1: {
     id: "formula1",
-    avatarUrl: "https://unavatar.io/reddit.com?fallback=false",
-    name: "r/formula1",
-    handle: "r/formula1",
-    platform: "reddit",
+    avatarUrl: "https://unavatar.io/instagram/f1?fallback=false",
+    name: "Formula 1",
+    handle: "@f1",
+    platform: "instagram",
     category: "Formula 1",
     gradient: "from-red-500 to-orange-600",
     followed: true,
@@ -97,8 +97,8 @@ export const creators: Record<string, Creator> = {
     id: "waveform",
     avatarUrl: "https://unavatar.io/youtube/@Waveform?fallback=false",
     name: "Waveform",
-    handle: "Waveform Podcast",
-    platform: "podcast",
+    handle: "@Waveform",
+    platform: "youtube",
     category: "Technology",
     gradient: "from-violet-400 to-purple-600",
     followed: true,
@@ -110,6 +110,26 @@ export const creators: Record<string, Creator> = {
     platform: "twitch",
     category: "Coding",
     gradient: "from-purple-400 to-fuchsia-600",
+    followed: true,
+  },
+  mosseri: {
+    id: "mosseri",
+    avatarUrl: "https://unavatar.io/instagram/mosseri?fallback=false",
+    name: "Adam Mosseri",
+    handle: "@mosseri",
+    platform: "threads",
+    category: "Technology",
+    gradient: "from-slate-400 to-zinc-600",
+    followed: true,
+  },
+  xqc: {
+    id: "xqc",
+    avatarUrl: "https://unavatar.io/twitch/xqc?fallback=false",
+    name: "xQc",
+    handle: "@xqc",
+    platform: "kick",
+    category: "Gaming",
+    gradient: "from-indigo-400 to-blue-600",
     followed: true,
   },
 };
@@ -159,8 +179,8 @@ export const suggestedCreators: Creator[] = [
     id: "syntax",
     avatarUrl: "https://unavatar.io/youtube/@syntaxfm?fallback=false",
     name: "Syntax",
-    handle: "Syntax Podcast",
-    platform: "podcast",
+    handle: "@syntaxfm",
+    platform: "youtube",
     category: "Coding",
     gradient: "from-rose-400 to-pink-600",
     suggestedBecause: "Similar to Fireship",
@@ -170,6 +190,7 @@ export const suggestedCreators: Creator[] = [
 export const feedItems: FeedItem[] = [
   {
     id: "f1",
+    reactions: 48200,
     creator: creators.fabrizio,
     type: "post",
     title:
@@ -182,6 +203,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f2",
+    reactions: 21400,
     creator: creators.fireship,
     type: "video",
     title: "TypeScript 6.0 in 100 seconds… and why your build just broke",
@@ -194,17 +216,19 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f3",
+    reactions: 96500,
     creator: creators.formula1,
     type: "post",
-    title: "Post-race debrief: how the undercut decided the British GP",
+    title: "Race weekend in photos: the undercut that decided the British GP",
     aiSummary:
-      "Top comment argues lap-18 pit call won the race; stewards' ruling on the turn-4 incident is the main controversy.",
+      "Gallery from the pit wall: the lap-18 stop that won the race, plus the turn-4 clash the stewards are reviewing.",
     category: "Formula 1",
     tags: ["entertainment", "news"],
     publishedAgo: "2h",
   },
   {
     id: "f4",
+    reactions: 33800,
     creator: creators.mkbhd,
     type: "video",
     title: "The Truth About Foldables in 2026: 3 Years Later",
@@ -217,6 +241,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f5",
+    reactions: 15200,
     creator: creators.anthropic,
     type: "post",
     title:
@@ -229,6 +254,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f6",
+    reactions: 7400,
     creator: creators.athletic,
     type: "article",
     title:
@@ -242,6 +268,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f7",
+    reactions: 3900,
     creator: creators.devstream,
     type: "stream",
     title: "Building a real-time multiplayer game in Rust — day 3",
@@ -253,6 +280,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f8",
+    reactions: 5600,
     creator: creators.waveform,
     type: "podcast",
     title: "Ep. 312 — The smartphone camera wars are over. Software won.",
@@ -265,6 +293,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f9",
+    reactions: 28700,
     creator: creators.huggingface,
     type: "post",
     title:
@@ -277,6 +306,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f10",
+    reactions: 61200,
     creator: creators.espnfc,
     type: "video",
     title: "Extended highlights: the 4-3 thriller everyone will talk about",
@@ -290,6 +320,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f11",
+    reactions: 44100,
     creator: creators.ltt,
     type: "video",
     title: "We built a PC entirely from parts found in e-waste",
@@ -302,6 +333,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     id: "f12",
+    reactions: 18900,
     creator: creators.fireship,
     type: "short",
     title: "POV: you deployed on Friday",
@@ -332,8 +364,8 @@ export const digest = {
   greeting: "Good morning",
   items: [
     { label: "YouTube uploads", count: 6 },
-    { label: "Reddit discussions", count: 4 },
+    { label: "Instagram posts", count: 4 },
     { label: "News articles", count: 3 },
-    { label: "Podcasts", count: 2 },
+    { label: "Live streams", count: 2 },
   ],
 };

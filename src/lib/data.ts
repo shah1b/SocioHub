@@ -71,6 +71,7 @@ interface FeedRow {
   tags: string[];
   duration_seconds: number | null;
   published_at: string;
+  reactions: number | null;
   creator: CreatorRow | null;
 }
 
@@ -94,7 +95,7 @@ export async function getFeedItems(): Promise<FeedItem[]> {
     const { data, error } = await publicClient()
       .from("feed_items")
       .select(
-        "id, platform, type, title, ai_summary, category, tags, duration_seconds, published_at, creator:creators(id, name, handle, platform, category, avatar_url)",
+        "id, platform, type, title, ai_summary, category, tags, duration_seconds, published_at, reactions, creator:creators(id, name, handle, platform, category, avatar_url)",
       )
       .order("published_at", { ascending: false })
       .limit(40)
@@ -114,6 +115,7 @@ export async function getFeedItems(): Promise<FeedItem[]> {
           tags: (row.tags ?? []) as ContentTag[],
           publishedAgo: live ? "LIVE" : relativeAgo(row.published_at),
           length: lengthLabel(row.type, row.duration_seconds),
+          reactions: row.reactions ?? 0,
         };
       });
   } catch {

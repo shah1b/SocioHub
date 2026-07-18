@@ -13,13 +13,13 @@ import {
 import { PlatformIcon } from "@/components/platform-icon";
 import type { Platform } from "@/lib/types";
 
-const PLATFORM_RING: Platform[] = ["youtube", "reddit", "x", "rss", "twitch", "podcast"];
+const PLATFORM_RING: Platform[] = ["facebook", "instagram", "youtube", "threads", "x", "twitch", "kick"];
 
 const SLIDES = [
   {
     icon: Layers,
     title: "Every platform.\nOne clean feed.",
-    body: "Connect YouTube, Reddit, X, RSS, Twitch and podcasts. Flow brings only the creators you chose into a single timeline — no recommendations you never asked for.",
+    body: "Connect Facebook, Instagram, YouTube, Threads, X, Twitch and Kick. Flow brings only the creators you chose into a single timeline — no recommendations you never asked for.",
   },
   {
     icon: ListFilter,

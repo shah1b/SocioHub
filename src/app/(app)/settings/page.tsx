@@ -18,7 +18,7 @@ import { MODES, useAttention } from "@/lib/attention";
 import { useTheme, type ThemePref } from "@/lib/theme";
 import type { AttentionMode, Platform } from "@/lib/types";
 
-const CONNECTED: Platform[] = ["youtube", "reddit", "x", "rss", "podcast", "twitch"];
+const CONNECTED: Platform[] = ["facebook", "instagram", "youtube", "threads", "x", "twitch", "kick"];
 
 const THEMES: { value: ThemePref; label: string; icon: typeof Moon }[] = [
   { value: "dark", label: "Dark", icon: Moon },

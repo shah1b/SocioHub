@@ -1,10 +1,11 @@
 export type Platform =
+  | "facebook"
+  | "instagram"
   | "youtube"
-  | "reddit"
+  | "threads"
   | "x"
-  | "rss"
   | "twitch"
-  | "podcast";
+  | "kick";
 
 export type ContentType =
   | "video"
@@ -44,6 +45,8 @@ export interface FeedItem {
   publishedAgo: string;
   /** Video/podcast length or article read time, e.g. "12:40" or "6 min read". */
   length?: string;
+  /** Total reactions across the source platform — powers Trending. */
+  reactions?: number;
   saved?: boolean;
 }
 

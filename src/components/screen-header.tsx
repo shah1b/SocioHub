@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
-import { Check, ChevronDown, Settings } from "lucide-react";
+import { Check, ChevronDown, Settings, UserRound } from "lucide-react";
 import { MODES, useAttention } from "@/lib/attention";
 import type { AttentionMode } from "@/lib/types";
 
@@ -100,9 +100,14 @@ export function FeedHeader() {
         )}
       </div>
 
-      <HeaderCircle href="/settings" label="Settings">
-        <Settings className="size-4.5" />
-      </HeaderCircle>
+      <div className="flex gap-2">
+        <HeaderCircle href="/profile" label="Your profile">
+          <UserRound className="size-4.5" />
+        </HeaderCircle>
+        <HeaderCircle href="/settings" label="Settings">
+          <Settings className="size-4.5" />
+        </HeaderCircle>
+      </div>
     </div>
   );
 }

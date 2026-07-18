@@ -11,7 +11,7 @@ import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import type { Platform } from "@/lib/types";
 
-const PLATFORMS: Platform[] = ["youtube", "reddit", "x", "rss", "twitch", "podcast"];
+const PLATFORMS: Platform[] = ["facebook", "instagram", "youtube", "threads", "x", "twitch", "kick"];
 
 const INTERESTS: Record<string, string[]> = {
   Sports: ["Football", "Formula 1", "NBA"],
@@ -177,8 +177,8 @@ export default function OnboardingPage() {
               })}
             </div>
             <p className="mt-4 text-xs text-faint">
-              Instagram, Facebook and TikTok are coming later — their APIs
-              limit what third-party apps can show.
+              Where a platform limits third-party feeds, Flow tracks creators
+              and links out instead of reproducing restricted content.
             </p>
           </>
         )}

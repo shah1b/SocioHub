@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Check, ChevronLeft, LoaderCircle, UserRound } from "lucide-react";
+import { MODES, useAttention } from "@/lib/attention";
+import { creators } from "@/lib/mock-data";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
@@ -24,6 +26,10 @@ interface ProfileDraft {
 }
 
 export default function ProfilePage() {
+  const { mode } = useAttention();
+  const [followedCount, setFollowedCount] = useState(
+    Object.keys(creators).length,
+  );
   const [draft, setDraft] = useState<ProfileDraft>({
     displayName: "",
     username: "",
@@ -38,6 +44,16 @@ export default function ProfilePage() {
     let cancelled = false;
 
     const load = async () => {
+      // Follows chosen during onboarding, when present.
+      const onboarding = localStorage.getItem("flow.onboarding");
+      if (onboarding) {
+        try {
+          const picked = JSON.parse(onboarding)?.creators;
+          if (Array.isArray(picked) && picked.length > 0) {
+            setFollowedCount(picked.length);
+          }
+        } catch {}
+      }
       // Local draft first so the screen is instantly editable.
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
@@ -152,7 +168,35 @@ export default function ProfilePage() {
         >
           {initials}
         </div>
-        <div className="mt-4 flex gap-2.5">
+        <p className="mt-4 text-xl font-extrabold tracking-tight">
+          {draft.displayName || "Your name"}
+        </p>
+        <p className="text-sm font-medium text-muted">
+          @{draft.username || "username"}
+        </p>
+
+        {/* Quick stats. */}
+        <div className="mt-5 flex w-full gap-2">
+          {[
+            { label: "Following", value: String(followedCount) },
+            { label: "Saved", value: "4" },
+            { label: "Mode", value: MODES[mode].label },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="glass flex-1 rounded-2xl px-3 py-3 text-center"
+            >
+              <p className="truncate text-[15px] font-extrabold">
+                {stat.value}
+              </p>
+              <p className="text-[11px] font-medium text-muted">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-5 flex gap-2.5">
           {GRADIENTS.map((gradient) => (
             <button
               key={gradient}

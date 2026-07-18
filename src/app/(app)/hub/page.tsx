@@ -9,11 +9,12 @@ import type { Platform } from "@/lib/types";
 
 const PLATFORM_ORDER: Platform[] = [
   "youtube",
+  "instagram",
+  "facebook",
   "x",
-  "reddit",
-  "rss",
-  "podcast",
+  "threads",
   "twitch",
+  "kick",
 ];
 
 /* Warm glow bleeding from the top, huge centered title, frosted dark

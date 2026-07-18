@@ -66,11 +66,12 @@ export const kpisByRange: Record<RangeKey, Kpi[]> = {
 /* Items ingested per platform (scaled per range on the overview). */
 export const ingestPerPlatform: { platform: string; perDay: number }[] = [
   { platform: "YouTube", perDay: 4210 },
-  { platform: "Reddit", perDay: 3480 },
-  { platform: "RSS", perDay: 2950 },
+  { platform: "Instagram", perDay: 3480 },
+  { platform: "Facebook", perDay: 2950 },
   { platform: "X", perDay: 2140 },
-  { platform: "Podcasts", perDay: 610 },
+  { platform: "Threads", perDay: 980 },
   { platform: "Twitch", perDay: 340 },
+  { platform: "Kick", perDay: 180 },
 ];
 
 export type PipelineStatus = "good" | "warning" | "serious" | "critical";
@@ -82,10 +83,10 @@ export const pipelines: {
   lastRun: string;
 }[] = [
   { name: "YouTube Data API poller", status: "good", detail: "All quotas healthy", lastRun: "2 min ago" },
-  { name: "Reddit listener", status: "good", detail: "Streaming normally", lastRun: "just now" },
-  { name: "RSS fetcher", status: "warning", detail: "14 feeds timing out (retrying)", lastRun: "6 min ago" },
+  { name: "Instagram Graph sync", status: "good", detail: "Streaming normally", lastRun: "just now" },
+  { name: "Facebook Pages poller", status: "warning", detail: "14 pages timing out (retrying)", lastRun: "6 min ago" },
   { name: "X API sync", status: "serious", detail: "Rate-limited — backoff until 14:20 UTC", lastRun: "41 min ago" },
-  { name: "Podcast index crawl", status: "good", detail: "Nightly run complete", lastRun: "5 h ago" },
+  { name: "Threads + Kick crawl", status: "good", detail: "Nightly run complete", lastRun: "5 h ago" },
   { name: "AI summarizer queue", status: "good", detail: "312 items/min, p95 1.8 s", lastRun: "live" },
 ];
 
@@ -121,6 +122,6 @@ export interface FlaggedItem {
 
 export const flaggedItems: FlaggedItem[] = [
   { id: "fl1", title: "You WON'T BELIEVE what this club just did…", creator: "TransferGossipDaily", platform: "YouTube", reason: "Clickbait classifier (0.96)", flaggedAgo: "18m" },
-  { id: "fl2", title: "Miracle supplement doubles your focus", creator: "BioHackPro", platform: "RSS", reason: "Spam / misleading claim", flaggedAgo: "1h" },
-  { id: "fl3", title: "Leaked: full match replay stream", creator: "streamz4free", platform: "Reddit", reason: "Copyright risk", flaggedAgo: "3h" },
+  { id: "fl2", title: "Miracle supplement doubles your focus", creator: "BioHackPro", platform: "Facebook", reason: "Spam / misleading claim", flaggedAgo: "1h" },
+  { id: "fl3", title: "Leaked: full match replay stream", creator: "streamz4free", platform: "Kick", reason: "Copyright risk", flaggedAgo: "3h" },
 ];
