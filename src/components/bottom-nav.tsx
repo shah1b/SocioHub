@@ -22,7 +22,10 @@ export function BottomNav() {
       className="fixed inset-x-0 bottom-0 z-40 flex justify-center"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 14px)" }}
     >
-      <div className="glass-strong flex items-center gap-2 rounded-full bg-background/70 p-2 shadow-2xl shadow-black/60">
+      <div
+        className="flex items-center gap-2 rounded-full border border-glass-border p-2 shadow-2xl shadow-black/60 backdrop-blur-xl"
+        style={{ background: "var(--dock)" }}
+      >
         {TABS.map(({ href, label, icon: Icon, accent }) => {
           const active =
             href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -36,9 +39,14 @@ export function BottomNav() {
                 accent
                   ? "bg-brand text-white shadow-lg shadow-accent/40"
                   : active
-                    ? "bg-card text-card-foreground"
-                    : "glass text-foreground/80"
+                    ? "bg-card text-card-foreground shadow-md shadow-black/30"
+                    : "text-foreground"
               }`}
+              style={
+                !accent && !active
+                  ? { background: "var(--dock-item)" }
+                  : undefined
+              }
             >
               <Icon className="size-5" />
             </Link>

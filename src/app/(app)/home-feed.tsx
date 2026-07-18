@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Sparkles } from "lucide-react";
 import { Avatar } from "@/components/avatar";
 import { FeedCard } from "@/components/feed-card";
@@ -9,7 +11,16 @@ import { digest } from "@/lib/mock-data";
 import type { Creator, FeedItem } from "@/lib/types";
 
 export function HomeFeed({ items: allItems }: { items: FeedItem[] }) {
+  const router = useRouter();
   const { mode } = useAttention();
+
+  // First-time visitors get the splash + intro before the feed.
+  useEffect(() => {
+    if (!localStorage.getItem("flow.welcomed")) {
+      router.replace("/welcome");
+    }
+  }, [router]);
+
   const items = allItems.filter(MODES[mode].filter);
   const storyCreators = allItems
     .map((item) => item.creator)

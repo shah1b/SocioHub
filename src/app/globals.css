@@ -20,6 +20,8 @@
   --card-foreground: #101010;
   --card-muted: #6b7280;
   --card-panel: #f3f3f5;
+  --dock: rgba(24, 24, 24, 0.97);
+  --dock-item: rgba(255, 255, 255, 0.1);
 }
 
 /* Light mode: warm off-white canvas, same white cards and brand hue. */
@@ -32,6 +34,8 @@
   --surface-strong: rgba(255, 255, 255, 0.72);
   --glass-border: rgba(0, 0, 0, 0.08);
   --accent-soft: rgba(247, 72, 27, 0.12);
+  --dock: rgba(255, 255, 255, 0.97);
+  --dock-item: rgba(0, 0, 0, 0.06);
 }
 
 @theme inline {

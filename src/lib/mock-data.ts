@@ -5,6 +5,7 @@ import type { CategoryInfo, Creator, FeedItem } from "./types";
 export const creators: Record<string, Creator> = {
   fireship: {
     id: "fireship",
+    avatarUrl: "https://unavatar.io/youtube/@fireship?fallback=false",
     name: "Fireship",
     handle: "@fireship",
     platform: "youtube",
@@ -14,6 +15,7 @@ export const creators: Record<string, Creator> = {
   },
   mkbhd: {
     id: "mkbhd",
+    avatarUrl: "https://unavatar.io/youtube/@mkbhd?fallback=false",
     name: "Marques Brownlee",
     handle: "@mkbhd",
     platform: "youtube",
@@ -23,6 +25,7 @@ export const creators: Record<string, Creator> = {
   },
   ltt: {
     id: "ltt",
+    avatarUrl: "https://unavatar.io/youtube/@LinusTechTips?fallback=false",
     name: "Linus Tech Tips",
     handle: "@LinusTechTips",
     platform: "youtube",
@@ -32,6 +35,7 @@ export const creators: Record<string, Creator> = {
   },
   espnfc: {
     id: "espnfc",
+    avatarUrl: "https://unavatar.io/youtube/@ESPNFC?fallback=false",
     name: "ESPN FC",
     handle: "@ESPNFC",
     platform: "youtube",
@@ -41,6 +45,7 @@ export const creators: Record<string, Creator> = {
   },
   fabrizio: {
     id: "fabrizio",
+    avatarUrl: "https://unavatar.io/x/FabrizioRomano?fallback=false",
     name: "Fabrizio Romano",
     handle: "@FabrizioRomano",
     platform: "x",
@@ -50,6 +55,7 @@ export const creators: Record<string, Creator> = {
   },
   athletic: {
     id: "athletic",
+    avatarUrl: "https://unavatar.io/theathletic.com?fallback=false",
     name: "The Athletic",
     handle: "theathletic.com",
     platform: "rss",
@@ -59,6 +65,7 @@ export const creators: Record<string, Creator> = {
   },
   anthropic: {
     id: "anthropic",
+    avatarUrl: "https://unavatar.io/x/AnthropicAI?fallback=false",
     name: "Anthropic",
     handle: "@AnthropicAI",
     platform: "x",
@@ -68,6 +75,7 @@ export const creators: Record<string, Creator> = {
   },
   huggingface: {
     id: "huggingface",
+    avatarUrl: "https://unavatar.io/x/huggingface?fallback=false",
     name: "Hugging Face",
     handle: "@huggingface",
     platform: "x",
@@ -77,6 +85,7 @@ export const creators: Record<string, Creator> = {
   },
   formula1: {
     id: "formula1",
+    avatarUrl: "https://unavatar.io/reddit.com?fallback=false",
     name: "r/formula1",
     handle: "r/formula1",
     platform: "reddit",
@@ -86,6 +95,7 @@ export const creators: Record<string, Creator> = {
   },
   waveform: {
     id: "waveform",
+    avatarUrl: "https://unavatar.io/youtube/@Waveform?fallback=false",
     name: "Waveform",
     handle: "Waveform Podcast",
     platform: "podcast",
@@ -107,6 +117,7 @@ export const creators: Record<string, Creator> = {
 export const suggestedCreators: Creator[] = [
   {
     id: "3blue1brown",
+    avatarUrl: "https://unavatar.io/youtube/@3blue1brown?fallback=false",
     name: "3Blue1Brown",
     handle: "@3blue1brown",
     platform: "youtube",
@@ -116,6 +127,7 @@ export const suggestedCreators: Creator[] = [
   },
   {
     id: "openai",
+    avatarUrl: "https://unavatar.io/x/OpenAI?fallback=false",
     name: "OpenAI",
     handle: "@OpenAI",
     platform: "x",
@@ -125,6 +137,7 @@ export const suggestedCreators: Creator[] = [
   },
   {
     id: "veritasium",
+    avatarUrl: "https://unavatar.io/youtube/@veritasium?fallback=false",
     name: "Veritasium",
     handle: "@veritasium",
     platform: "youtube",
@@ -134,6 +147,7 @@ export const suggestedCreators: Creator[] = [
   },
   {
     id: "tifo",
+    avatarUrl: "https://unavatar.io/youtube/@TifoFootball?fallback=false",
     name: "Tifo Football",
     handle: "@TifoFootball",
     platform: "youtube",
@@ -143,6 +157,7 @@ export const suggestedCreators: Creator[] = [
   },
   {
     id: "syntax",
+    avatarUrl: "https://unavatar.io/youtube/@syntaxfm?fallback=false",
     name: "Syntax",
     handle: "Syntax Podcast",
     platform: "podcast",

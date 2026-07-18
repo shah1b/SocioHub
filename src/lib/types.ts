@@ -26,6 +26,8 @@ export interface Creator {
   category: string;
   /** Tailwind gradient classes for the avatar fallback. */
   gradient: string;
+  /** Public profile image; falls back to gradient initials when unset/broken. */
+  avatarUrl?: string;
   followed?: boolean;
   suggestedBecause?: string;
 }

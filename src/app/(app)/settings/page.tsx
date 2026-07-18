@@ -9,6 +9,7 @@ import {
   Moon,
   ShieldCheck,
   Sun,
+  UserRound,
 } from "lucide-react";
 import { PlatformIcon, PLATFORM_LABELS } from "@/components/platform-icon";
 import { ScreenHeader } from "@/components/screen-header";
@@ -111,6 +112,15 @@ export default function SettingsPage() {
       <section>
         <SectionHeader title="Account" />
         <div className="glass divide-y divide-glass-border overflow-hidden rounded-[1.5rem]">
+          <Link
+            href="/profile"
+            className="flex items-center justify-between px-4 py-4 text-[15px] font-bold transition active:bg-surface"
+          >
+            <span className="flex items-center gap-3">
+              <UserRound className="size-4 text-muted" /> Edit profile
+            </span>
+            <ChevronRight className="size-4 text-faint" />
+          </Link>
           <Link
             href="/login"
             className="flex items-center justify-between px-4 py-4 text-[15px] font-bold transition active:bg-surface"

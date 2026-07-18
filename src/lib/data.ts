@@ -58,6 +58,7 @@ interface CreatorRow {
   handle: string;
   platform: Platform;
   category: string;
+  avatar_url: string | null;
 }
 
 interface FeedRow {
@@ -81,6 +82,7 @@ function mapCreator(row: CreatorRow): Creator {
     platform: row.platform,
     category: row.category,
     gradient: gradientFor(row.name),
+    avatarUrl: row.avatar_url ?? undefined,
   };
 }
 
@@ -92,7 +94,7 @@ export async function getFeedItems(): Promise<FeedItem[]> {
     const { data, error } = await publicClient()
       .from("feed_items")
       .select(
-        "id, platform, type, title, ai_summary, category, tags, duration_seconds, published_at, creator:creators(id, name, handle, platform, category)",
+        "id, platform, type, title, ai_summary, category, tags, duration_seconds, published_at, creator:creators(id, name, handle, platform, category, avatar_url)",
       )
       .order("published_at", { ascending: false })
       .limit(40)
@@ -126,7 +128,7 @@ export async function getCreators(): Promise<Creator[]> {
   try {
     const { data, error } = await publicClient()
       .from("creators")
-      .select("id, name, handle, platform, category")
+      .select("id, name, handle, platform, category, avatar_url")
       .order("name")
       .overrideTypes<CreatorRow[]>();
     if (error || !data || data.length === 0)
