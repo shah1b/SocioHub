@@ -39,7 +39,10 @@ export interface Kpi {
   delta: number;
   deltaLabel: string;
   upIsGood: boolean;
-  trend: number[];
+  /** Delta is a raw count (live stats), not a percentage. */
+  deltaIsCount?: boolean;
+  /** Omitted for live KPIs — no historical series exists yet. */
+  trend?: number[];
 }
 
 export const kpisByRange: Record<RangeKey, Kpi[]> = {

@@ -32,8 +32,8 @@ export default function AdminLayout({
         <AdminNav />
         <div className="mt-auto border-t border-[var(--viz-border)] px-5 py-4">
           <p className="text-[11px] text-[var(--viz-muted)]">
-            Demo mode — mock data. Sign-in gating arrives with Supabase admin
-            roles.
+            Live aggregates sync from the app every minute. User rows and
+            sign-in gating unlock with Supabase admin roles.
           </p>
         </div>
       </aside>

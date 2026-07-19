@@ -45,7 +45,11 @@ export function StatTile({ kpi }: { kpi: Kpi }) {
   const positive = kpi.delta >= 0;
   const good = positive === kpi.upIsGood;
   const sign = positive ? "+" : "−";
-  const magnitude = Math.abs(kpi.delta).toFixed(1);
+  const magnitude = kpi.deltaIsCount
+    ? Math.abs(kpi.delta).toLocaleString("en-US")
+    : Math.abs(kpi.delta).toFixed(1) + (kpi.value.includes("%") ? " pts" : "%");
+  // A zero count carries no signal — show only the label.
+  const showDelta = !(kpi.deltaIsCount && kpi.delta === 0);
 
   return (
     <div className="rounded-2xl border border-[var(--viz-border)] bg-[var(--viz-surface)] p-4">
@@ -54,17 +58,20 @@ export function StatTile({ kpi }: { kpi: Kpi }) {
         <p className="text-[26px] font-semibold leading-none text-[var(--viz-ink)]">
           {kpi.value}
         </p>
-        <Sparkline points={kpi.trend} />
+        {kpi.trend && <Sparkline points={kpi.trend} />}
       </div>
       <p className="mt-2 text-xs text-[var(--viz-ink-2)]">
-        <span
-          className="font-semibold"
-          style={{ color: good ? "var(--viz-good)" : "var(--viz-critical)" }}
-        >
-          {sign}
-          {magnitude}
-          {kpi.value.includes("%") ? " pts" : "%"}
-        </span>{" "}
+        {showDelta && (
+          <>
+            <span
+              className="font-semibold"
+              style={{ color: good ? "var(--viz-good)" : "var(--viz-critical)" }}
+            >
+              {sign}
+              {magnitude}
+            </span>{" "}
+          </>
+        )}
         <span className="text-[var(--viz-muted)]">{kpi.deltaLabel}</span>
       </p>
     </div>
